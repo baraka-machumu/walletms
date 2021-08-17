@@ -19,10 +19,9 @@
                 <!--End Logo icon -->
                 <!-- Logo text -->
                 <span class="logo-text">
-                             <!-- dark Logo text -->
-                             {{--<img src="{{asset('public/assets/images/logo-text.png')}}" alt="homepage" class="light-logo" />--}}
 
-                    <span>N Card</span>
+                    <span>BancABC</span>
+
                         </span>
 
                 <!-- </b> -->
