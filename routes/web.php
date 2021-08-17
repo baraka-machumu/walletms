@@ -17,3 +17,14 @@ Route::get('/', function () {
     return view('index');
 });
 
+
+
+Route::post('login', function (){
+
+
+    return view('dashboard.home');
+
+});
+
+
+Route::post('logout','Auth\LoginController@logout')->name('logout');

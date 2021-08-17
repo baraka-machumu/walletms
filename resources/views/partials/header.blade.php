@@ -13,7 +13,7 @@
                 <b class="logo-icon p-l-10">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="{{asset('public/assets/images/ncard.jpeg')}}"  width="35" height="35" alt="homepage" class="light-logo" />
+                    <img src="{{asset('/img/abc.png')}}"  width="35" height="35" alt="homepage" class="light-logo" />
 
                 </b>
                 <!--End Logo icon -->
@@ -101,7 +101,7 @@
                 <!-- User profile and search -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('public/assets/images/1.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('img/1.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated">
 
                         <div class="dropdown-divider"></div>
