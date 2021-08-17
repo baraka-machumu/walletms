@@ -127,7 +127,7 @@
             float: left;
             /*margin-right: 38%;*/
             background-color: transparent;
-            box-shadow: 3px 3px 3px 3px #c1bdbd;
+            /*box-shadow: 3px 3px 3px 3px #c1bdbd;*/
 
         }
 
