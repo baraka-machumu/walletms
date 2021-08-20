@@ -24,6 +24,12 @@
 
                                 <i class="mdi mdi-note-outline"></i><span class="hide-menu">Manage Users</span></a>
                         </li>
+                        <li class="sidebar-item"><a href="{{url('access/roles')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Roles</span></a></li>
+                        <li class="sidebar-item"><a href="{{url('access/permissions')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Permissions</span></a></li>
+                        <li class="sidebar-item"><a href="{{url('access/profiles')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Profile</span></a></li>
+                        <li class="sidebar-item"><a href="{{url('access/user-profiles')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">User Profile</span></a></li>
+                        <li class="sidebar-item"><a href="{{url('services')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Services</span></a></li>
+                        <li class="sidebar-item"><a href="{{url('gateways')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Gateways</span></a></li>
 
                     </ul>
                 </li>
