@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 /**
  * authentication activities
  */
-Route::get('/','Auth\LoginController@showLoginForm')->name('login');
-Route::post('login','Auth\LoginController@webLogin');
+Route::get('/',[LoginController::class,'showLoginForm'])->name('login');
+Route::post('login',[LoginController::class,'login']);
 
 
 Route::group(['middleware'=>'auth'], function () {
 
-    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+    Route::post('logout', [LoginController::class,'logout'])->name('logout');
 
     /**
      * manage consumes
