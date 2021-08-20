@@ -37,6 +37,7 @@ class ConsumerController extends Controller
     public function index()
     {
 
+
         if (!Gate::allows('manage-consumer')) {
 
             return redirect('error-access');

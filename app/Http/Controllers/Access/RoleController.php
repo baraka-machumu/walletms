@@ -26,11 +26,12 @@ class RoleController extends Controller
     public function index()
     {
 
-        if (!Gate::allows('manage-service-role-perm')) {
-
-            return view('errors.login_access');
-
-        }
+//
+//        if (!Gate::allows('manage-service-role-perm')) {
+//
+//            return view('errors.login_access');
+//
+//        }
 
         $roles =  Role::all()->toArray();
 
@@ -76,6 +77,10 @@ class RoleController extends Controller
         $permission  =  $request->permission;
 
         DB::beginTransaction();
+
+
+        //1create profile , 2, wallet ->
+
         try {
             $role = new Role();
 
@@ -102,7 +107,7 @@ class RoleController extends Controller
             return redirect('access/roles');
 
         }
-        catch(\Exception $exception) {
+        catch(\Throwable $exception) {
 
             DB::rollBack();
             Session::flash('alert-danger','Failed to save role '.$exception->getMessage());
@@ -146,11 +151,11 @@ class RoleController extends Controller
     public function edit($id)
     {
 
-        if (!Gate::allows('manage-service-role-perm')) {
-
-            return view('errors.login_access');
-
-        }
+//        if (!Gate::allows('manage-service-role-perm')) {
+//
+//            return view('errors.login_access');
+//
+//        }
         $role  =  Role::query()->where(['id'=>$id])->first();
 
         $permissions  = Permission::query()->get();

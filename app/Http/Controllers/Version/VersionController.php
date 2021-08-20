@@ -20,4 +20,6 @@ class VersionController extends Controller
         return response()->json(['error'=>false,'version'=>'1.5']);
 
     }
+
+
 }

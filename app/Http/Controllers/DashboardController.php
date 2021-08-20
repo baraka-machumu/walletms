@@ -26,27 +26,6 @@ class DashboardController extends Controller
         return view('dashboard');
     }
 
-    public  static  function getAccessToUserInfo($id){
-
-        $consumer= DB::table('users')
-            ->select('users.email','users.phone_number','consumers.first_name','consumers.last_name')
-            ->join('consumers', 'users.id', '=', 'consumers.user_id')
-            ->where('users.role_id', $id);
-
-        $agents = DB::table('users')
-            ->select('users.email','users.phone_number','agents.first_name','agents.last_name')
-            ->join('agents', 'users.id', '=', 'agents.user_id')
-            ->where('users.role_id', $id);
-
-        $userstoreroles = DB::table('users')
-            ->select('users.email','users.phone_number','merchant_users.first_name','merchant_users.last_name')
-            ->join('merchant_users', 'users.id', '=', 'merchant_users.user_id')
-            ->where('users.role_id', $id)
-            ->unionAll($consumer)
-            ->unionAll($agents)->get();
-
-        return $userstoreroles;
-    }
 
 
     // function to list all regions

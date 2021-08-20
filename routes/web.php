@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Access\RoleController;
+use App\Http\Controllers\Access\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -52,10 +54,15 @@ Route::group(['middleware'=>'auth'], function () {
 
         Route::group(['prefix' => 'users'], function () {
 
-            Route::resource('/', 'Access\UserController');
-            Route::get('/{id}/edit', 'Access\UserController@edit')->name('access-user-edit');
-            Route::post('/update/{id}', 'Access\UserController@update');
-            Route::get('/view/{id}', 'Access\UserController@show');
+
+            Route::resources([
+                '/' => UserController::class,
+            ]);
+
+
+            Route::get('/{id}/edit', [UserController::class,'edit'])->name('access-user-edit');
+            Route::post('/update/{id}', [UserController::class,'update']);
+            Route::get('/view/{id}', [UserController::class,'show']);
             Route::post('/activate', 'Access\UserController@activateUser');
             Route::post('/disable', 'Access\UserController@disabledUser');
             Route::post('/reset-password', 'Access\UserController@resetPassword');
@@ -67,14 +74,17 @@ Route::group(['middleware'=>'auth'], function () {
         Route::get('roles/getrole-data/{id}', 'Access\RoleController@getRoleData');
         Route::get('permissions/getpermission-data/{id}', 'Access\PermissionController@getPermissionData');
 
-        Route::resource('roles', 'Access\RoleController');
+        Route::resources([
+            'roles' => RoleController::class,
+        ]);
+
 
         Route::post('permissions/update', 'Access\PermissionController@permissionUpdate');
 
         Route::post('assign/permission', 'Access\ProfileController@assignPermissionToProfile');
 
         Route::resource('permissions', 'Access\PermissionController');
-        Route::get('role/{roleId}/edit', 'Access\RoleController@edit')->name('access-role-edit');
+        Route::get('role/{roleId}/edit', [RoleController::class,'edit'])->name('access-role-edit');
 
         Route::get('errors/login', 'Access\ErrorController@errorLogin');
 

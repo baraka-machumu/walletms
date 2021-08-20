@@ -30,11 +30,11 @@ class UserController extends Controller
     public function index()
     {
 
-        if (!Gate::allows('manage-user')) {
-
-            return view('errors.login_access');
-
-        }
+//        if (!Gate::allows('manage-user')) {
+//
+//            return view('errors.login_access');
+//
+//        }
 
         $users =  User::all()->toArray();
 
@@ -156,11 +156,11 @@ class UserController extends Controller
     public function show($id)
 
     {
-        if (!Gate::allows('manage-user')) {
-
-            return view('errors.login_access');
-
-        }
+//        if (!Gate::allows('manage-user')) {
+//
+//            return view('errors.login_access');
+//
+//        }
 
         $user  =  DB::table('users as u')
             ->select('first_name','last_name','middle_name','u.email','u.phone_number','u.status','s.name as sname')
@@ -185,11 +185,11 @@ class UserController extends Controller
     public function edit($id)
     {
 
-        if (!Gate::allows('manage-user')) {
-
-            return view('errors.login_access');
-
-        }
+//        if (!Gate::allows('manage-user')) {
+//
+//            return view('errors.login_access');
+//
+//        }
 //
 //        $user  = \App\User::with('roles')->where('id','=',Auth::user()->id)->first();
 //

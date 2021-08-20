@@ -32,6 +32,7 @@ class HelperController extends Controller
 
         return str_replace(',','',$pas);
     }
+
     public  static function addSpecial()
     {
 
