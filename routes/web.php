@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -119,4 +120,8 @@ Route::group(['middleware'=>'auth'], function () {
         Route::post('disabled-consumer-card', 'Wallet\ConsumerWalletController@disableCard');
 
     });
+
+
+    Route::get('dashboard',[DashboardController::class,'adminDashboard']);
+
 });
