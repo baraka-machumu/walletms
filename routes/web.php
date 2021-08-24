@@ -4,6 +4,7 @@ use App\Http\Controllers\Access\RoleController;
 use App\Http\Controllers\Access\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExchangeRateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -133,5 +134,9 @@ Route::group(['middleware'=>'auth'], function () {
 
 
     Route::get('dashboard',[DashboardController::class,'adminDashboard']);
+
+    Route::get('view-exchange-rate',[ExchangeRateController::class,'viewExchangeRate'])->name('view-exchange-rate');
+    Route::get('view-currency-code',[ExchangeRateController::class,'viewCurrencyCodes'])->name('view-currency-code');
+
 
 });
