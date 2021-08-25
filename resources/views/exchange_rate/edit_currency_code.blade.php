@@ -59,7 +59,6 @@
             <div class="col-md-12">
                 <div class="card">
 
-
                     <form method="post" action="{{ url('update-currency-code/'.$currency_types->id) }}" >
                         {{ csrf_field() }}
 

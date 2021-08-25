@@ -25,18 +25,6 @@ class ExchangeRateController extends Controller
         }
     }
 
-    public function viewCurrencyCodes()
-    {
-        try {
-            $curriencies = CurrencyTypes::all();
-
-            return view('exchange_rate.currency', compact('curriencies'));
-        }catch (\Throwable $e)
-        {
-            Log::info("message",['ErrorMessage'=>$e->getMessage()]);
-        }
-    }
-
     public function addExchangeRate(Request $request)
     {
             try{
@@ -72,6 +60,21 @@ class ExchangeRateController extends Controller
         }
     }
 
+    public function editExchangeRates($id)
+    {
+        try{
+            $exchange_rate = ExchangeRates::query()->where(['id'=>$id])->get()[0];
+
+            $currency_code = CurrencyTypes::all();
+
+            return view('exchange_rate.edit_exchange_rate',compact('exchange_rate','currency_code'));
+
+        }catch(\Throwable $e)
+        {
+            Log::info("message",['ErrorMessage'=>$e->getMessage()]);
+        }
+    }
+
     public function updateExchangeRate(Request $request)
     {
         try{
@@ -87,6 +90,18 @@ class ExchangeRateController extends Controller
             }
 
 
+        }catch (\Throwable $e)
+        {
+            Log::info("message",['ErrorMessage'=>$e->getMessage()]);
+        }
+    }
+
+    public function viewCurrencyCodes()
+    {
+        try {
+            $curriencies = CurrencyTypes::all();
+
+            return view('exchange_rate.currency', compact('curriencies'));
         }catch (\Throwable $e)
         {
             Log::info("message",['ErrorMessage'=>$e->getMessage()]);
@@ -130,31 +145,13 @@ class ExchangeRateController extends Controller
         }
     }
 
-    public function editExchangeRates($id)
-    {
-        try{
-            $exchange_rate = ExchangeRates::query()->where(['id'=>$id])->get()[0];
-
-            $currency_code = CurrencyTypes::all();
-
-            return view('exchange_rate.edit_exchange_rate',compact('exchange_rate','currency_code'));
-
-        }catch(\Throwable $e)
-        {
-            Log::info("message",['ErrorMessage'=>$e->getMessage()]);
-        }
-    }
-
     public function updateCurrencyCode(Request $request)
     {
         try{
-            $currency_types = CurrencyTypes::query()->where(['id',$request->id])->update([
+            if(CurrencyTypes::where('id',$request->id)->update([
                 'name'=>$request->name,
                 'currency_code'=>$request->currency_code
-            ]);
-
-
-            if($currency_types == true){
+            ])==true){
                 return redirect()->back();
             }else{
                 return redirect()->back();
