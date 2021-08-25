@@ -31,7 +31,7 @@
                         <li class="sidebar-item"><a href="{{url('services')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Services</span></a></li>
                         <li class="sidebar-item"><a href="{{url('gateways')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Gateways</span></a></li>
                         <li class="sidebar-item"><a href="{{url('view-currency-code')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Currrency Codes</span></a></li>
-                        <li class="sidebar-item"><a href="{{url('view-currency-code')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Exchange Rates</span></a></li>
+                        <li class="sidebar-item"><a href="{{url('view-exchange-rate')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">Exchange Rates</span></a></li>
 
                     </ul>
                 </li>

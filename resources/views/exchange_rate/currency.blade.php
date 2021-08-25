@@ -33,6 +33,8 @@
                         @endif
                     @endforeach
 
+                        <button type="button" data-toggle="modal" data-target="#create-role-modal" class="btn btn-cyan btn-sm" id="previous">New Currency Code</button>
+
             </div>
 
             <div class="col-lg-12 table-margin-top">
@@ -55,16 +57,17 @@
 
                     <?php  $i = 1;?>
                     @foreach($curriencies as $currency)
+
+
                     <tr>
 
                         <td>{{$i}}</td>
-                        <td>{{$currency->name}}</td>
-                        <td>{{$currency->currency_code}}</td>
+                        <td>{{strtoupper($currency->name)}}</td>
+                        <td>{{strtoupper($currency->currency_code)}}</td>
 
                         <td>
-                            <a href="#" class="btn btn-danger disable-consumer" id="#" ><i class="fa fa-trash"></i></a>
-                            <a href="#" class="btn btn-cyan enable-consumer" id="#" ><i class="fa fa-toggle-on"></i></a>
-                            <a href="#" class="btn btn-info"><i class="fa fa-eye"></i></a>
+{{--                            <a href="#" class="btn btn-danger disable-consumer" id="#" ><i class="fa fa-trash"></i></a>--}}
+                            <a href="{{ url('edit-currency-code/'.$currency->id) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
                         </td>
 
                     </tr>
@@ -289,6 +292,8 @@
         </form>
 
     </div>
+
+    @include('exchange_rate.create_currency_code')
 
 
 @stop

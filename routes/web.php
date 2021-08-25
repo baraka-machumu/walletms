@@ -136,7 +136,13 @@ Route::group(['middleware'=>'auth'], function () {
     Route::get('dashboard',[DashboardController::class,'adminDashboard']);
 
     Route::get('view-exchange-rate',[ExchangeRateController::class,'viewExchangeRate'])->name('view-exchange-rate');
+    Route::get('edit-exchange-rate/{id}',[ExchangeRateController::class,'editExchangeRates'])->name('edit-exchange-rate');
+    Route::post('add-exchange-rate',[ExchangeRateController::class,'addExchangeRate'])->name('add-exchange-rate');
+    Route::post('update-exchange-rate/{id}',[ExchangeRateController::class,'updateExchangeRate'])->name('update-exchange-rate');
+
+
     Route::get('view-currency-code',[ExchangeRateController::class,'viewCurrencyCodes'])->name('view-currency-code');
-
-
+    Route::get('edit-currency-code/{id}',[ExchangeRateController::class,'editCurrencyCodes'])->name('edit-currency-code/{id}');
+    Route::post('add-currency-code',[ExchangeRateController::class,'addCurrencyCode'])->name('add-currency-code');
+    Route::post('update-currency-code/{id}',[ExchangeRateController::class,'updateCurrencyCode'])->name('update-currency-code');
 });

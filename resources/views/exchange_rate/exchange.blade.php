@@ -7,12 +7,12 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">Exchange</h4>
+                <h4 class="page-title">Exchange Rates</h4>
                 <div class="ml-auto text-right">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Merchant</li>
+                            <li class="breadcrumb-item active" aria-current="page">Rates</li>
                         </ol>
                     </nav>
                 </div>
@@ -33,6 +33,8 @@
                         @endif
                     @endforeach
 
+                        <button type="button" data-toggle="modal" data-target="#create-role-modal" class="btn btn-cyan btn-sm" id="previous">New Exchange Rate</button>
+
             </div>
 
             <div class="col-lg-12 table-margin-top">
@@ -44,13 +46,11 @@
                     <tr>
 
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Last Name</th>
-                        <th>Telephone</th>
-                        <th>Registration Source</th>
-                        <th>Wallet Id</th>
-                        <th>Card Number</th>
-
+                        <th>Currency Code</th>
+                        <th>Exchange Rate</th>
+                        <th>Exchange Currency Code</th>
+                        <th>Created By</th>
+                        <th>Last Updated By</th>
                         <th>Actions</th>
 
                     </tr>
@@ -59,42 +59,19 @@
                     <tbody>
 
                     <?php  $i = 1;?>
-                    @foreach($consumers as $consumer)
+                    @foreach($exchanges as $exchange)
                     <tr>
 
                         <td>{{$i}}</td>
-                        <td>{{$consumer->first_name}}</td>
-                        <td>{{$consumer->last_name}}</td>
-                        <td>{{$consumer->phone_number}}</td>
-                        <td>
-                            @if($consumer->agent_code==null)
-                                <span style="color:#0b94db; "> {{'Self Registration'}}</span>
-                            @else
-                                {{$consumer->agent_code}}
-                            @endif
-                        </td>
-                        <td>{{$consumer->wallet_id}}</td>
-                        <input type="hidden" value="{{$consumer->first_name.' '.$consumer->last_name}}" id="{{'c-'.$consumer->wallet_id}}">
-                        <td>
-                            @if($consumer->card_number==null)
-                                <span style="color:#db5c13; "> {{'No Card Assigned'}}</span>
-                                @else
-                                {{$consumer->card_number}}
-                                @endif
-                        </td>
+                        <td>{{strtoupper($exchange->currency_code_code) ?? ''}}</td>
+                        <td>{{$exchange->exchange_rate ?? ''}}</td>
+                        <td>{{strtoupper($exchange->exchange_currency_code) ?? ''}}</td>
+                        <td>{{strtoupper($exchange->creators->first_name)  ?? ''}}  {{strtoupper($exchange->creators->last_name)  ?? ''}}  </td>
+                        <td>{{strtoupper($exchange->lastUpdate->first_name) ?? ''}} {{strtoupper($exchange->lastUpdate->last_name) ?? ''}}</td>
 
                         <td>
-                            {{--<a href="{{url('merchants/edit')}}" class="btn btn-success"><i class="fa fa-edit"></i></a>--}}
-                            @if($consumer->status_id==1)
-                                <a href="#" class="btn btn-danger disable-consumer" id="{{$consumer->wallet_id}}" ><i class="fa fa-trash"></i></a>
-
-                            @elseif($consumer->status_id==0)
-                                <a href="#" class="btn btn-cyan enable-consumer" id="{{$consumer->wallet_id}}" ><i class="fa fa-toggle-on"></i></a>
-
-                            @endif
-                            <a href="{{route('consumers.show',$consumer->wallet_id)}}" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                            {{--<a href="{{url('merchants/users')}}" class="btn btn-info"><i class="fa fa-users"></i></a>--}}
-
+{{--                                <a href="#" class="btn btn-danger disable-consumer" id="" ><i class="fa fa-trash"></i></a>--}}
+                                <a href="{{ url('edit-exchange-rate/'.$exchange->id) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
                         </td>
 
                     </tr>
@@ -319,6 +296,8 @@
         </form>
 
     </div>
+
+    @include('exchange_rate.create_exchange_rate')
 
 
 @stop

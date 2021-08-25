@@ -25,4 +25,9 @@ class ExchangeRates extends Model
     {
         return $this->belongsTo(User::class,"created_by_id","id");
     }
+
+    public function lastUpdate()
+    {
+        return $this->belongsTo(User::class,"last_updated_by","id");
+    }
 }
